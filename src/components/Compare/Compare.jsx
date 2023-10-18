@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import SearchBar from '../SearchBar/SearchBar';
+import ResultList from '../ListItem/ListItem';
 import './Compare.css'
 
 const Compare = () => {
@@ -10,24 +11,23 @@ const Compare = () => {
         setDataFromSearchBar(data);
     }
 
+    const clearResults = () => {
+        setDataFromSearchBar([]); // Clear the search results by setting it to an empty array
+    }
+
+
     return (
-        <div>
-            <h1>Comparar</h1>
+        <div className='comp-container'>
+            <h1 className='comp-title'>Comparar</h1>
             <SearchBar onDataFromSearchBar={handleDataFromSearchBar} />
-            <div className="selected-products">
-                {(dataFromSearchBar.length > 0) ? (
-                    <ul>
-                        {dataFromSearchBar.map((item, index) => (
-                            <li key={index}>{item.nombre} - {item.nombre_local}: ${item.precio}</li>
-                        ))}
-                    </ul>
-                ) : (
-                    <div className="results-placeholder">
-                        <img className="hamburguer-icon" src="/img/hamburguer.png" alt="Search" />
-                        <h1 className="hamburguer-text">Compara y compra!</h1>
-                    </div>
-                )}
-            </div>
+            {(dataFromSearchBar.length > 0) ? (
+                <ResultList searchResults={dataFromSearchBar} clearResults={clearResults} />
+            ) : (
+                <div className="results-placeholder">
+                    <img className="hamburguer-icon" src="/img/hamburguer.png" alt="Search" />
+                    <h1 className="hamburguer-text">Compara y compra!</h1>
+                </div>
+            )}
         </div>
 
     );

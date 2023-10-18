@@ -31,17 +31,15 @@ const SearchInput = (props) => {
     };
 
     return (
-        <div>
-            <div className="search-input-container">
-                <input
-                    className="search-input"
-                    type="text"
-                    placeholder="Buscar..."
-                    value={query}
-                    onChange={handleInputChange}
-                    onKeyDown={handleKeyDown}
-                />
-            </div>
+        <>
+            <input
+                className="search-input"
+                type="text"
+                placeholder="Buscar..."
+                value={query}
+                onChange={handleInputChange}
+                onKeyDown={handleKeyDown}
+            />
             {props.showSuggestions && (
                 <ul className="suggestions">
                     {suggestions.map((suggestion, index) => (
@@ -51,7 +49,7 @@ const SearchInput = (props) => {
                     ))}
                 </ul>
             )}
-        </div>
+        </>
     );
 };
 
