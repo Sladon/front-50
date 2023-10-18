@@ -40,6 +40,7 @@
 }
 
 .suggestions {
+    position: absolute;
     width: 90%;
     background-color: #fff;
     border: 1px solid #999;
@@ -47,6 +48,7 @@
     overflow-y: auto;
     list-style: none;
     padding: 0;
+    z-index: 4;
 }
 
 .suggestions li {

@@ -1,75 +1,56 @@
-import React, { Component } from 'react';
-import './SearchInput.css'
+import React, { useState } from 'react';
+import './SearchInput.css';
 
-class SearchInput extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            query: '',
-            suggestions: [],
-        };
-    }
+const SearchInput = (props) => {
+    const [query, setQuery] = useState('');
+    const [suggestions, setSuggestions] = useState([]);
 
-    handleInputChange = (e) => {
+    const handleInputChange = (e) => {
         const query = e.target.value;
+        setQuery(query);
+
         if (query.trim() !== '') {
-            const suggestions = this.props.data.filter(item =>
+            const filteredSuggestions = props.data.filter(item =>
                 item.toLowerCase().includes(query.toLowerCase())
             );
-
-            this.setState({
-                suggestions,
-            });
+            setSuggestions(filteredSuggestions);
+        } else {
+            setSuggestions([]);
         }
-        else {
-            const suggestions = [];
-            this.setState({
-                suggestions,
-            });
-        }
-        this.setState({ query })
     };
 
-    handleSuggestionClick = (suggestion) => {
-        this.setState({
-            query: suggestion,
-            suggestions: [],
-        });
+    const handleSuggestionClick = (suggestion) => {
+        setQuery(suggestion);
+        setSuggestions([]);
     };
 
-    handleSearch = () => {
-        const { query, suggestions } = this.state;
-        this.props.onSearch(query, suggestions);
+    const handleSearch = () => {
+        props.onSearch(query, suggestions);
     };
 
-    render() {
-        const { query, suggestions } = this.state;
-
-        return (
-            <div className="search-bar">
-                <div className='search-input-container'>
-                    <input
-                        className='search-input'
-                        type="text"
-                        placeholder="Buscar..."
-                        value={query}
-                        onChange={this.handleInputChange}
-                    />
-                    <button className="search-btn" onClick={this.handleSearch}>
-                        <img className="search-icon" src="/img/searchicon.png" alt="Search" />
-                    </button>
-                </div>
-                <ul className="suggestions">
-                    {suggestions.map((suggestion, index) => (
-                        <li key={index} onClick={() => this.handleSuggestionClick(suggestion)}>
-                            {suggestion}
-                        </li>
-                    ))}
-                </ul>
-
+    return (
+        <div>
+            <div className='search-input-container'>
+                <input
+                    className='search-input'
+                    type="text"
+                    placeholder="Buscar..."
+                    value={query}
+                    onChange={handleInputChange}
+                />
+                <button className="search-btn" onClick={handleSearch}>
+                    <img className="search-icon" src="/img/searchicon.png" alt="Search" />
+                </button>
             </div>
-        );
-    }
-}
+            <ul className="suggestions">
+                {suggestions.map((suggestion, index) => (
+                    <li key={index} onClick={() => handleSuggestionClick(suggestion)}>
+                        {suggestion}
+                    </li>
+                ))}
+            </ul>
+        </div>
+    );
+};
 
 export default SearchInput;
