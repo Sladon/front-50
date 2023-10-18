@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import SearchInput from '../SearchInput/SearchInput';
 import FilterBox from '../Filters/FilterBox/FilterBox';
+import './SearchBar.css';
 
 const SearchBar = (props) => {
-    const [selectedItems, setSelectedItems] = useState([]);
     const [products, setProducts] = useState([]);
     const [searchedProducts, setSearch] = useState([]);
     const [filterOptions, setFilterOptions] = useState({
@@ -35,7 +35,6 @@ const SearchBar = (props) => {
         const search = products
             .filter(item => item.nombre.toLowerCase().includes(query.toLowerCase()))
             .map(item => item);
-        setSelectedItems(search);
         setSearch(search);
         props.onDataFromSearchBar(search);
     };
@@ -48,23 +47,24 @@ const SearchBar = (props) => {
             && (price === 0 || parseFloat(product.precio) <= price)
             // && (tags.length === 0 || tags.some(tag => product.nombre.toLowerCase().includes(tag.toLowerCase)))
         );
-        setSelectedItems(filteredProducts);
         props.onDataFromSearchBar(filteredProducts);
     };
 
     return (
         <div className="search-bar">
-            <SearchInput data={suggestions} onSearch={handleSearch} />
+            <SearchInput data={suggestions} onSearch={handleSearch} showSuggestions={!toggleFilters} />
             <button className="filter-btn" onClick={() => {
                 setToggleFilters(!toggleFilters);
             }}>
                 <img className="filter-icon" src="/img/filtericon.png" alt="Filter" />
             </button>
-            {toggleFilters && <FilterBox
-                tags={filterOptions.tags}
-                locations={filterOptions.locations}
-                onFilter={handleFilter}
-            />}
+            {toggleFilters && (
+                <FilterBox
+                    tags={filterOptions.tags}
+                    locations={filterOptions.locations}
+                    onFilter={handleFilter}
+                />
+            )}
         </div>
     );
 }

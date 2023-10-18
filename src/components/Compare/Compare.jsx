@@ -12,13 +12,13 @@ const Compare = () => {
 
     return (
         <div>
-            <h1>Compare Items</h1>
+            <h1>Comparar</h1>
             <SearchBar onDataFromSearchBar={handleDataFromSearchBar} />
             <div className="selected-products">
                 {(dataFromSearchBar.length > 0) ? (
                     <ul>
                         {dataFromSearchBar.map((item, index) => (
-                            <li key={index}>{item.nombre} - {item.nombre_local}</li>
+                            <li key={index}>{item.nombre} - {item.nombre_local}: ${item.precio}</li>
                         ))}
                     </ul>
                 ) : (

@@ -1,12 +1,13 @@
 .combined-filter {
     position: absolute;
-    width: 70%;
-    height: 50%;
+    width: 60%;
+    height: 40%;
     border: 1px solid black;
     overflow: auto;
     z-index: 5;
     background-color: white;
-    right: 0%;
+    right: 2%;
+    top: 2%
 }
 
 .selected-products {

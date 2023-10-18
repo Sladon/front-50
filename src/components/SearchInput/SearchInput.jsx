@@ -20,8 +20,7 @@ const SearchInput = (props) => {
     };
 
     const handleSearch = () => {
-        console.log(suggestions)
-        props.onSearch(query, suggestions);
+        props.onSearch(query);
     };
 
     const handleKeyDown = (e) => {
@@ -43,13 +42,15 @@ const SearchInput = (props) => {
                     onKeyDown={handleKeyDown}
                 />
             </div>
-            <ul className="suggestions">
-                {suggestions.map((suggestion, index) => (
-                    <li key={index} onClick={() => handleSearch(suggestion)}>
-                        {suggestion}
-                    </li>
-                ))}
-            </ul>
+            {props.showSuggestions && (
+                <ul className="suggestions">
+                    {suggestions.map((suggestion, index) => (
+                        <li key={index} onClick={() => handleSearch(suggestion)}>
+                            {suggestion}
+                        </li>
+                    ))}
+                </ul>
+            )}
         </div>
     );
 };
