@@ -3,21 +3,24 @@ import PriceSlider from '../Price/Price';
 import ItemSelector from '../ItemSelector/ItemSelector';
 import './FilterBox.css';
 
-const FilterBox = ({ tags, locations }) => {
+const FilterBox = ({ tags, locations, onFilter }) => {
     const [selectedTags, setSelectedTags] = useState([]);
     const [selectedLocations, setSelectedLocations] = useState([]);
     const [selectedPrice, setSelectedPrice] = useState(0);
 
     const handleSelectedTags = (selectedTags) => {
         setSelectedTags(selectedTags);
+        onFilter({ price: selectedPrice, locals: selectedLocations, tags: selectedTags })
     };
 
     const handleSelectedLocations = (selectedLocations) => {
         setSelectedLocations(selectedLocations);
+        onFilter({ price: selectedPrice, locals: selectedLocations, tags: selectedTags })
     };
 
     const handleSelectedPrice = (selectedPrice) => {
         setSelectedPrice(selectedPrice);
+        onFilter({ price: selectedPrice, locals: selectedLocations, tags: selectedTags })
     };
 
     return (
