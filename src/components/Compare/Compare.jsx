@@ -1,84 +1,67 @@
-import React from "react";
-import "./Compare.css";
-import { SearchItem } from "../SearchItem/SearchItem";
-import Filters from "./Filters"
-
+import React, { useState, useEffect } from 'react';
+import SearchInput from '../SearchInput/SearchInput';
+import FilterBox from '../Filters/FilterBox/FilterBox';
 
 const Compare = () => {
-    const [searchInput, setSearchInput] = React.useState("");
+    const [selectedItems, setSelectedItems] = useState([]);
+    const [products, setProducts] = useState([]);
+    const [filterOptions, setFilterOptions] = useState({
+        tags: ["Tag 1", "Tag 2", "Tag 3", "Tag 4", "Tag 5"],
+        locations: [],
+    });
+    const [suggestions, setSuggestions] = useState([]);
 
-    const [searchFilters, setSearchFilters] = React.useState({ price: 0 });
-    const [openFilters, setOpenFilters] = React.useState(false);
+    useEffect(() => {
+        fetch("http://127.0.0.1:8000/api/productos/")
+            .then((response) => response.json())
+            .then((data) => {
+                setProducts(data);
+                setSuggestions(data.map(item => item.nombre));
+                setFilterOptions(prevOptions => ({
+                    ...prevOptions,
+                    locations: [...new Set(data.map(item => item.local))],
+                }));
+            })
+            .catch((error) => {
+                console.error("Error fetching data:", error);
+            });
+    }, []);
 
-    const [searchResults, setSearchResults] = React.useState(null);
-    const [searching, setSearching] = React.useState(false);
-    const [searchError, setSearchError] = React.useState(false);
+    const handleSearch = (query) => {
+        const filteredSuggestions = products
+            .filter(item => item.nombre.toLowerCase().includes(query.toLowerCase()))
+            .map(item => item.nombre);
+        setSuggestions(filteredSuggestions);
+    };
 
-    const handleSearch = () => {
-        console.log("Search for: ", searchInput, " with filters: ", searchFilters);
-        setOpenFilters(false);
-        setSearchResults([{
-            id: 1,
-            name: "Hamburguesa",
-            location: "Ciencias",
-            price: 100,
-            img: "/img/hamburguer.png"
-        },
-        {
-            id: 2,
-            name: "Muffin",
-            location: "Ciencias",
-            price: 50,
-            img: "/img/muffin.jpg"
-        }]
+    const handleFilter = (selectedLocations, selectedTags) => {
+        console.log(selectedLocations, selectedTags)
+        // Filter products based on selected locations and tags
+        const filteredProducts = products.filter((product) =>
+            (selectedLocations.length === 0 || selectedLocations.includes(product.local))
         );
-    }
-
-    const handleSearchInput = (e) => {
-        setSearchInput(e.target.value);
-    }
-
-
-
+        setSelectedItems(filteredProducts);
+    };
 
     return (
-        <div className="comp-container">
-            <h1 className="comp-title">Comparar</h1>
-            <div className="search-bar">
-                <input className="search-input" onChange={handleSearchInput} value={searchInput} type="text" placeholder="Buscar" />
-                <button className="search-btn" onClick={handleSearch}>
-                    <img className="search-icon" src="/img/searchicon.png" alt="Search" />
-                </button>
-                <button className="filter-btn" onClick={() => setOpenFilters(!openFilters)}>
-                    <img className="filter-icon" src="/img/filtericon.png" alt="Filter" />
-                </button>
-                {openFilters && (
-                    <Filters filters={searchFilters} setFilters={setSearchFilters} />
-                )}
+        <div className="compare">
+            <h1>Compare Items</h1>
+            <SearchInput data={suggestions} onSearch={handleSearch} />
+            <FilterBox
+                tags={filterOptions.tags}
+                locations={filterOptions.locations}
+                onFilter={handleFilter}
+            />
+            <div className="selected-products">
+                <h2>Selected Products:</h2>
+                <ul>
+                    {selectedItems.map((item, index) => (
+                        <li key={index}>{item.nombre} - {item.local}</li>
+                    ))}
+                </ul>
             </div>
-            {searchResults ? (
-                <div className="results">
-                    <div className="results-header">
-                        <h1 className="res-head-title">Cantidad de resultados: {searchResults.length}</h1>
-                        <button className="clear-btn" onClick={() => setSearchResults(null)}>
-                            Limpiar
-                            <img className="clear-icon" src="/img/sweeping.png" alt="Clear" />
-                        </button>
-                    </div>
-                    {searchResults.map((result) => {
-                        return (<SearchItem key={result.id} productID={result.id} onClick={(data) => console.log("Navigate to product:", data)} name={result.name} location={result.location} price={result.price} img={result.img} />)
-                    })}
-                </div>) : (
-                <div className="results-placeholder">
-                    <img className="hamburguer-icon" src="/img/hamburguer.png" alt="Search" />
-                    <h1 className="hamburguer-text">Compara y compra!</h1>
-                </div>
-            )
-            }
-
         </div>
-    )
-}
-
+    );
+};
 
 export default Compare;

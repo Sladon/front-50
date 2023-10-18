@@ -1,0 +1,73 @@
+.combined-filter {
+    padding: 5%;
+}
+
+.combined-filter h1 {
+    font-weight: bold;
+    text-align: center;
+    font-size: large;
+}
+
+.combined-filter .price-slider {
+    padding-top: 10%;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.combined-filter .location {
+    margin-top: 5%;
+    font-size: medium;
+    font-weight: 600;
+}
+
+.combined-filter .tag {
+    margin-top: 5%;
+    font-size: medium;
+}
+
+.combined-filter .tag h2 {
+    font-weight: 600;
+}
+
+.item {
+    border: 1px solid rgb(66, 63, 63);
+}
+
+.item-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 1%;
+}
+
+.location .item {
+    width: calc(50% - 3%);
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 50px;
+}
+
+.tag .item-list {
+    align-items: center;
+
+}
+
+.tag .item {
+    border-radius: 40%;
+    padding: 10px;
+    text-align: center;
+    min-width: 20px;
+    min-height: 15px;
+    margin: 5px;
+    font-size: small;
+}
+
+
+.selected {
+    background-color: rgb(148, 227, 148);
+}

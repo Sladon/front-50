@@ -1,12 +1,6 @@
 import React from "react";
 import "./SearchItem.css";
 
-/*
-howto:
-      <SearchItem productID="2" onClick={handleClick} name="Muffin de Chocolate" location="Edificio Humanidades" price="2.700" img="https://thefirstyearblog.com/wp-content/uploads/2020/05/Chocolate-Chip-Muffins-2023-8.jpg"/>
-      
-*/
-
 export const SearchItem = (props) => {
     return (
         <div className="search-item">
