@@ -10,7 +10,7 @@ const SearchInput = (props) => {
         setQuery(query);
 
         if (query.trim() !== '') {
-            const filteredSuggestions = props.data.filter(item =>
+            const filteredSuggestions = props.data.filter((item) =>
                 item.toLowerCase().includes(query.toLowerCase())
             );
             setSuggestions(filteredSuggestions);
@@ -19,32 +19,33 @@ const SearchInput = (props) => {
         }
     };
 
-    const handleSuggestionClick = (suggestion) => {
-        setQuery(suggestion);
-        setSuggestions([]);
+    const handleSearch = () => {
+        console.log(suggestions)
+        props.onSearch(query, suggestions);
     };
 
-    const handleSearch = () => {
-        props.onSearch(query, suggestions);
+    const handleKeyDown = (e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            handleSearch();
+        }
     };
 
     return (
         <div>
-            <div className='search-input-container'>
+            <div className="search-input-container">
                 <input
-                    className='search-input'
+                    className="search-input"
                     type="text"
                     placeholder="Buscar..."
                     value={query}
                     onChange={handleInputChange}
+                    onKeyDown={handleKeyDown}
                 />
-                <button className="search-btn" onClick={handleSearch}>
-                    <img className="search-icon" src="/img/searchicon.png" alt="Search" />
-                </button>
             </div>
             <ul className="suggestions">
                 {suggestions.map((suggestion, index) => (
-                    <li key={index} onClick={() => handleSuggestionClick(suggestion)}>
+                    <li key={index} onClick={() => handleSearch(suggestion)}>
                         {suggestion}
                     </li>
                 ))}

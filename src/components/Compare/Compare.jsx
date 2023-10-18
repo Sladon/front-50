@@ -6,6 +6,7 @@ const Compare = () => {
     const [dataFromSearchBar, setDataFromSearchBar] = useState([]);
 
     const handleDataFromSearchBar = (data) => {
+        console.log(data)
         setDataFromSearchBar(data);
     }
 

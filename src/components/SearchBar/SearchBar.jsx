@@ -13,10 +13,6 @@ const SearchBar = (props) => {
     const [suggestions, setSuggestions] = useState([]);
     const [toggleFilters, setToggleFilters] = useState(false);
 
-    const sendDataToParent = () => {
-        props.onDataFromSearchBar(selectedItems);
-    }
-
     useEffect(() => {
         fetch("http://127.0.0.1:8000/api/productos/")
             .then((response) => response.json())
@@ -41,7 +37,7 @@ const SearchBar = (props) => {
             .map(item => item);
         setSelectedItems(search);
         setSearch(search);
-        sendDataToParent();
+        props.onDataFromSearchBar(search);
     };
 
     const handleFilter = (filters) => {
@@ -53,7 +49,7 @@ const SearchBar = (props) => {
             // && (tags.length === 0 || tags.some(tag => product.nombre.toLowerCase().includes(tag.toLowerCase)))
         );
         setSelectedItems(filteredProducts);
-        sendDataToParent();
+        props.onDataFromSearchBar(filteredProducts);
     };
 
     return (
