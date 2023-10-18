@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import SearchInput from '../SearchInput/SearchInput';
 import FilterBox from '../Filters/FilterBox/FilterBox';
+import './Compare.css'
 
 const Compare = () => {
     const [selectedItems, setSelectedItems] = useState([]);
@@ -33,6 +34,7 @@ const Compare = () => {
         const search = products
             .filter(item => item.nombre.toLowerCase().includes(query.toLowerCase()))
             .map(item => item);
+        setSelectedItems(search);
         setSearch(search);
     };
 
