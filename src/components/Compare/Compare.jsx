@@ -14,11 +14,18 @@ const Compare = () => {
             <h1>Compare Items</h1>
             <SearchBar onDataFromSearchBar={handleDataFromSearchBar} />
             <div className="selected-products">
-                <ul>
-                    {dataFromSearchBar.map((item, index) => (
-                        <li key={index}>{item.nombre} - {item.nombre_local}</li>
-                    ))}
-                </ul>
+                {(dataFromSearchBar.length > 0) ? (
+                    <ul>
+                        {dataFromSearchBar.map((item, index) => (
+                            <li key={index}>{item.nombre} - {item.nombre_local}</li>
+                        ))}
+                    </ul>
+                ) : (
+                    <div className="results-placeholder">
+                        <img className="hamburguer-icon" src="/img/hamburguer.png" alt="Search" />
+                        <h1 className="hamburguer-text">Compara y compra!</h1>
+                    </div>
+                )}
             </div>
         </div>
 

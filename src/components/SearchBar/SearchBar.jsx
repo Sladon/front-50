@@ -5,12 +5,13 @@ import FilterBox from '../Filters/FilterBox/FilterBox';
 const SearchBar = (props) => {
     const [selectedItems, setSelectedItems] = useState([]);
     const [products, setProducts] = useState([]);
-    const [searchedProducts, setSearch] = useState([])
+    const [searchedProducts, setSearch] = useState([]);
     const [filterOptions, setFilterOptions] = useState({
         tags: ["Tag 1", "Tag 2", "Tag 3", "Tag 4", "Tag 5"],
         locations: [],
     });
     const [suggestions, setSuggestions] = useState([]);
+    const [toggleFilters, setToggleFilters] = useState(false);
 
     const sendDataToParent = () => {
         props.onDataFromSearchBar(selectedItems);
@@ -34,6 +35,7 @@ const SearchBar = (props) => {
     }, []);
 
     const handleSearch = (query) => {
+        setToggleFilters(false);
         const search = products
             .filter(item => item.nombre.toLowerCase().includes(query.toLowerCase()))
             .map(item => item);
@@ -57,11 +59,16 @@ const SearchBar = (props) => {
     return (
         <div className="search-bar">
             <SearchInput data={suggestions} onSearch={handleSearch} />
-            <FilterBox
+            <button className="filter-btn" onClick={() => {
+                setToggleFilters(!toggleFilters);
+            }}>
+                <img className="filter-icon" src="/img/filtericon.png" alt="Filter" />
+            </button>
+            {toggleFilters && <FilterBox
                 tags={filterOptions.tags}
                 locations={filterOptions.locations}
                 onFilter={handleFilter}
-            />
+            />}
         </div>
     );
 }
