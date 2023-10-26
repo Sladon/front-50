@@ -1,5 +1,8 @@
+.selected {
+    background-color: rgb(163, 255, 171);
+}
 
-.search-item{
+.search-item {
     width: 90%;
     height: 100px;
     margin-right: 5%;
@@ -7,13 +10,13 @@
     border-top: 1px solid rgb(67, 67, 67);
 }
 
-.vertical-flex{
+.vertical-flex {
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
-.google-image{
+.google-image {
     width: 90px;
     margin: 5px;
     height: 90px;
@@ -31,14 +34,14 @@
     padding-left: 10px;
 }
 
-.vertical-separator{
+.vertical-separator {
     width: 100%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 }
 
-.custom-button{
+.custom-button {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     width: 50px;
     background-color: rgb(53, 51, 67);
@@ -47,30 +50,30 @@
     border: none;
 }
 
-.custom-button:hover{
+.custom-button:hover {
     background-color: rgb(53, 51, 67);
     color: white;
 }
 
-.custom-button:active{
+.custom-button:active {
     background-color: rgb(53, 51, 67);
     color: white;
 }
 
-.price-tag{
+.price-tag {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-weight: bold;
     margin-top: 10px;
     flex: 1;
 }
 
-.item-name{
+.item-name {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: larger;
     font-weight: bold;
 }
 
-.item-location{
+.item-location {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     padding-left: 10px;
     font-size: small;

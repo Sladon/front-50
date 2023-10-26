@@ -61,7 +61,8 @@
     cursor: pointer;
 }
 
-.ubicacion-title {
+.ubicacion-title,
+.tag-title {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 15px;
     font-weight: bold;
@@ -69,24 +70,23 @@
     margin-top: 20px;
 }
 
-.ubicacion-container {
+.ubicacion-container,
+.tag-container {
     width: 92%;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
+    overflow-y: scroll;
 }
 
-.ubicacion-btn {
+
+.item {
     width: 45%;
     height: 30px;
     margin-bottom: 8px;
     background-color: rgb(216, 248, 255);
     border: 1px solid rgb(0, 0, 0);
     border-radius: 5px;
-}
-
-.selected {
-    background-color: rgb(163, 255, 171);
 }
