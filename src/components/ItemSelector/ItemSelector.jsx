@@ -14,19 +14,17 @@ const ItemSelector = ({ items, onSelectedItemsChange }) => {
     };
 
     return (
-        <div className="item-selector">
-            <div className="item-list">
-                {items.map((item, index) => (
-                    <div
-                        key={index}
-                        className={`item ${selectedItems.includes(item) ? 'selected' : ''}`}
-                        onClick={() => handleItemClick(item)}
-                    >
-                        {item}
-                    </div>
-                ))}
-            </div>
-        </div>
+        <>
+            {items.map((item, index) => (
+                <div
+                    key={index}
+                    className={`item ${selectedItems.includes(item) ? 'selected' : ''}`}
+                    onClick={() => handleItemClick(item)}
+                >
+                    {item}
+                </div>
+            ))}
+        </>
     );
 };
 
