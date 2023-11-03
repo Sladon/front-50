@@ -19,14 +19,15 @@ const SearchInput = (props) => {
         }
     };
 
-    const handleSearch = () => {
-        props.onSearch(query);
+    const handleSearch = (option) => {
+        props.onSearch(option);
+        setQuery(option)
     };
 
     const handleKeyDown = (e) => {
         if (e.key === 'Enter') {
             e.preventDefault();
-            handleSearch();
+            handleSearch(query);
         }
     };
 
