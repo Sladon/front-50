@@ -3,13 +3,12 @@ import SearchBar from '../SearchBar/SearchBar';
 import ResultList from '../ListItem/ListItem';
 import ProductDetails from './ProductDetails';
 import './Compare.css'
-import './Product.css'
+import './ProductResults.css'
 
 const Compare = () => {
     const [dataFromSearchBar, setDataFromSearchBar] = useState([]);
 
     const handleDataFromSearchBar = (data) => {
-        console.log(data)
         setDataFromSearchBar(data);
     }
 
