@@ -1,7 +1,7 @@
 import React from 'react';
 import ResultItem from './Item';
 
-function ResultList({ searchResults, clearResults }) {
+function ResultList({ searchResults, clearResults, ItemDetailsComponent }) {
     return (
         <div className="results">
             <div className="results-header">
@@ -12,7 +12,7 @@ function ResultList({ searchResults, clearResults }) {
                 </button>
             </div>
             {searchResults.map((result) => (
-                <ResultItem key={result.id} result={result} onClick={(data) => console.log("Navigate to product:", data)} />))}
+                <ResultItem key={result.id} result={result} ItemDetailsComponent={ItemDetailsComponent} onClick={(data) => console.log("Navigate to product:", data)} />))}
         </div>
     );
 }

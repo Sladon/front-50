@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import SearchInput from '../SearchInput/SearchInput';
 import FilterBox from '../Filters/FilterBox/FilterBox';
+import { GetProducts } from "../../api";
 import './SearchBar.css';
 
 const SearchBar = (props) => {
@@ -13,21 +14,17 @@ const SearchBar = (props) => {
     const [suggestions, setSuggestions] = useState([]);
     const [toggleFilters, setToggleFilters] = useState(false);
 
+    const handleData = (data) => {
+        setProducts(data);
+        setSuggestions(data.map(item => item.nombre));
+        setFilterOptions(prevOptions => ({
+            ...prevOptions,
+            locations: [...new Set(data.map(item => item.nombre_local))],
+        }));
+    }
+
     useEffect(() => {
-        fetch("http://127.0.0.1:8000/api/productos/")
-            .then((response) => response.json())
-            .then((data) => {
-                console.log(data)
-                setProducts(data);
-                setSuggestions(data.map(item => item.nombre));
-                setFilterOptions(prevOptions => ({
-                    ...prevOptions,
-                    locations: [...new Set(data.map(item => item.nombre_local))],
-                }));
-            })
-            .catch((error) => {
-                console.error("Error fetching data:", error);
-            });
+        GetProducts(handleData);
     }, []);
 
     const handleSearch = (query) => {

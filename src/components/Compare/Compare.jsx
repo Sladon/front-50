@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import SearchBar from '../SearchBar/SearchBar';
 import ResultList from '../ListItem/ListItem';
+import ProductDetails from './ProductDetails';
 import './Compare.css'
 import './Product.css'
 
@@ -22,7 +23,7 @@ const Compare = () => {
             <h1 className='comp-title'>Comparar</h1>
             <SearchBar onDataFromSearchBar={handleDataFromSearchBar} />
             {(dataFromSearchBar.length > 0) ? (
-                <ResultList searchResults={dataFromSearchBar} clearResults={clearResults} />
+                <ResultList searchResults={dataFromSearchBar} clearResults={clearResults} ItemDetailsComponent={ProductDetails} />
             ) : (
                 <div className="results-placeholder">
                     <img className="hamburguer-icon" src="/img/hamburguer.png" alt="Search" />
