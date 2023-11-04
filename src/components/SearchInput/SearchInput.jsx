@@ -5,23 +5,27 @@ const SearchInput = (props) => {
     const [query, setQuery] = useState('');
     const [suggestions, setSuggestions] = useState([]);
 
-    const handleInputChange = (e) => {
-        const query = e.target.value;
-        setQuery(query);
-
-        if (query.trim() !== '') {
+    function filterSuggestions(value) {
+        if (value.trim() !== '') {
             const filteredSuggestions = props.data.filter((item) =>
-                item.toLowerCase().includes(query.toLowerCase())
+                item.toLowerCase().includes(value.toLowerCase())
             );
             setSuggestions(filteredSuggestions);
         } else {
             setSuggestions([]);
         }
+    }
+
+    const handleInputChange = (e) => {
+        const query = e.target.value;
+        filterSuggestions(query);
+        setQuery(query);
     };
 
-    const handleSearch = (option) => {
-        props.onSearch(option);
-        setQuery(option)
+    const handleSearch = (value) => {
+        props.onSearch(value);
+        setQuery(value)
+        filterSuggestions(value);
     };
 
     const handleKeyDown = (e) => {
