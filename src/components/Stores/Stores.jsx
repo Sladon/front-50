@@ -20,14 +20,10 @@ const Stores = () => {
 
     return (
         <div className='comp-container'>
-            <h1 className='comp-title'>Comparar</h1>
+            <h1 className='comp-title'>Tiendas</h1>
             <SearchBar onDataFromSearchBar={handleDataFromSearchBar} getApiCall={GetStores} />
-            {(dataFromSearchBar.length > 0) ? (
-                <ResultList searchResults={dataFromSearchBar} clearResults={clearResults} ItemDetailsComponent={StoresItemDetails} />
-            ) : (
-                <div className="results-placeholder">
-                    <h1 className="hamburguer-text">Tiendas</h1>
-                </div>
+            {(dataFromSearchBar.length > 0) && (
+                <ResultList searchResults={dataFromSearchBar} clearResults={clearResults} ItemDetailsComponent={StoresItemDetails} navigateTo={"/store"} />
             )}
         </div>
 

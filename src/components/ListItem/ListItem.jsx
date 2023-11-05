@@ -1,7 +1,11 @@
 import React from 'react';
 import ResultItem from './Item';
+import { useNavigate } from "react-router-dom";
 
-function ResultList({ searchResults, clearResults, ItemDetailsComponent }) {
+function ResultList({ searchResults, clearResults, ItemDetailsComponent, navigateTo }) {
+
+    const navigate = useNavigate();
+
     return (
         <div className="results">
             <div className="results-header">
@@ -12,7 +16,7 @@ function ResultList({ searchResults, clearResults, ItemDetailsComponent }) {
                 </button>
             </div>
             {searchResults.map((result) => (
-                <ResultItem key={result.id} result={result} ItemDetailsComponent={ItemDetailsComponent} onClick={(data) => console.log("Navigate to product:", data)} />))}
+                <ResultItem key={result.id} result={result} ItemDetailsComponent={ItemDetailsComponent} onClick={(data) => navigate(navigateTo + `/${data.id}`, { state: { id: data.id } })} />))}
         </div>
     );
 }

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import SearchInput from '../SearchInput/SearchInput';
 import FilterBox from '../Filters/FilterBox/FilterBox';
-import { GetProducts } from "../../api";
 import './SearchBar.css';
 
 const SearchBar = (props) => {

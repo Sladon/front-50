@@ -1,7 +1,7 @@
 const origin = "http://127.0.0.1:8000/api/";
 const products = origin + "productos/";
-const createProduct = products + "/crear";
-const product = (id) => productos + `/${id}`;
+const createProduct = products + "crear/";
+const product = (id) => products + `${id}/`;
 const locals = origin + "locales/";
 const local = (id) => locals + `${id}/`;
 const productReviews = (id, productId) => local(productId) + `${id}/`;
@@ -19,16 +19,12 @@ function fetch_data(url, handleData) {
         });
 }
 
-export const GetProducts = (handleData) => {
-    fetch_data(products, handleData);
-};
+export const GetProducts = (handleData) => fetch_data(products, handleData);
 
-export const GetProduct = () => {
-    fetch_data(product, null);
-}
+export const GetProduct = (id, handleData) => fetch_data(product(id), handleData);
 
 export const GetImage = (extension) => images + `${extension}`;
 
-export const GetStores = (handleData) => {
-    fetch_data(locals, handleData);
-}
+export const GetStores = (handleData) => fetch_data(locals, handleData);
+
+export const GetStore = (id, handleData) => fetch_data(local(id), handleData);

@@ -23,7 +23,7 @@ const Compare = () => {
             <h1 className='comp-title'>Comparar</h1>
             <SearchBar onDataFromSearchBar={handleDataFromSearchBar} getApiCall={GetProducts} />
             {(dataFromSearchBar.length > 0) ? (
-                <ResultList searchResults={dataFromSearchBar} clearResults={clearResults} ItemDetailsComponent={ProductDetails} />
+                <ResultList searchResults={dataFromSearchBar} clearResults={clearResults} ItemDetailsComponent={ProductDetails} navigateTo={"/product"} />
             ) : (
                 <div className="results-placeholder">
                     <img className="hamburguer-icon" src="/img/hamburguer.png" alt="Search" />
