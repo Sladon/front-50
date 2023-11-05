@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import SearchBar from '../SearchBar/SearchBar';
 import ResultList from '../ListItem/ListItem';
 import ProductDetails from './ProductDetails';
+import { GetProducts } from '../../api';
 import './Compare.css'
 import './ProductResults.css'
 
@@ -20,7 +21,7 @@ const Compare = () => {
     return (
         <div className='comp-container'>
             <h1 className='comp-title'>Comparar</h1>
-            <SearchBar onDataFromSearchBar={handleDataFromSearchBar} />
+            <SearchBar onDataFromSearchBar={handleDataFromSearchBar} getApiCall={GetProducts} />
             {(dataFromSearchBar.length > 0) ? (
                 <ResultList searchResults={dataFromSearchBar} clearResults={clearResults} ItemDetailsComponent={ProductDetails} />
             ) : (

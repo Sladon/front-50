@@ -28,3 +28,7 @@ export const GetProduct = () => {
 }
 
 export const GetImage = (extension) => images + `${extension}`;
+
+export const GetStores = (handleData) => {
+    fetch_data(locals, handleData);
+}

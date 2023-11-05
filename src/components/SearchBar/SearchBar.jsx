@@ -24,7 +24,7 @@ const SearchBar = (props) => {
     }
 
     useEffect(() => {
-        GetProducts(handleData);
+        props.getApiCall(handleData);
     }, []);
 
     const handleSearch = (query) => {
