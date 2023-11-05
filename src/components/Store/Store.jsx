@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { GetStore } from '../../api';
-import { useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 const Store = () => {
+    const { id } = useParams();
+
     const [Store, setStore] = useState({});
-    const location = useLocation();
-    const { id } = location.state;
 
 
     const handleData = (data) => {

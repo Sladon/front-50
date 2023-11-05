@@ -16,7 +16,7 @@ function ResultList({ searchResults, clearResults, ItemDetailsComponent, navigat
                 </button>
             </div>
             {searchResults.map((result) => (
-                <ResultItem key={result.id} result={result} ItemDetailsComponent={ItemDetailsComponent} onClick={(data) => navigate(navigateTo + `/${data.id}`, { state: { id: data.id } })} />))}
+                <ResultItem key={result.id} result={result} ItemDetailsComponent={ItemDetailsComponent} onClick={(data) => navigate(navigateTo + `/${result.id}`)} />))}
         </div>
     );
 }

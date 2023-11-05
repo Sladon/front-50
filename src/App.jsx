@@ -15,8 +15,8 @@ const App = () => {
                     <Route exact path="/profile" element={<ProfilePage />} />
                     <Route exact path="/stores" element={<Stores />} />
                     <Route exact path="/compare" element={<Compare />} />
-                    <Route exact path="/product" element={<Product />} />
-                    <Route exact path="/store" element={<Store />} />
+                    <Route exact path="/product/:id" element={<Product />} />
+                    <Route exact path="/store/:id" element={<Store />} />
                 </Routes>
                 <NavigationBar />
             </HashRouter>

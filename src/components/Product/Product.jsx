@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { GetProduct } from '../../api';
-import { useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 const Product = () => {
-    const [product, setProduct] = useState({});
-    const location = useLocation();
-    const { id } = location.state;
+    const { id } = useParams();
 
+    const [product, setProduct] = useState({});
 
     const handleData = (data) => {
         console.log(data);
