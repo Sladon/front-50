@@ -32,6 +32,7 @@ const SearchInput = (props) => {
         if (e.key === 'Enter') {
             e.preventDefault();
             handleSearch(query);
+            setSuggestions([]);
         }
     };
 
@@ -45,10 +46,13 @@ const SearchInput = (props) => {
                 onChange={handleInputChange}
                 onKeyDown={handleKeyDown}
             />
-            {props.showSuggestions && (
+            {props.showSuggestions && suggestions.length > 0 && (
                 <ul className="suggestions">
                     {suggestions.map((suggestion, index) => (
-                        <li key={index} onClick={() => handleSearch(suggestion)}>
+                        <li key={index} onClick={() => {
+                            handleSearch(suggestion);
+                            setSuggestions([]);
+                        }}>
                             {suggestion}
                         </li>
                     ))}
