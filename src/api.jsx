@@ -4,7 +4,9 @@ const createProduct = products + "crear/";
 const product = (id) => products + `${id}/`;
 const locals = origin + "locales/";
 const local = (id) => locals + `${id}/`;
-const productReviews = (id) => 'product/' + `${id}/` + 'reviews/';
+const localProducts = (id) => `${local(id)}` + "productos/"
+const productReviews = (id) => `product/${id}/reviews/`;
+
 const images = origin + "images/"
 
 function fetch_data(url, handleData) {
@@ -30,3 +32,5 @@ export const GetStores = (handleData) => fetch_data(locals, handleData);
 export const GetStore = (id, handleData) => fetch_data(local(id), handleData);
 
 export const GetReviews = (id, handleData) => fetch_data(productReviews(id), handleData);
+
+export const GetStoreProducts = (id, handleData) => fetch_data(localProducts(id), handleData);

@@ -9,15 +9,15 @@ const Reviews = () => {
     const [reviews, setReviews] = useState("");
 
     const handleData = (data) => {
-        setReviews(data);
+        console.log(id)
     }
 
     useEffect(() => {
         GetReviews(id, handleData);
     })
 
-    return(
-        <h1></h1>
+    return (
+        <h1>asd</h1>
     )
 };
 
