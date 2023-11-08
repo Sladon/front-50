@@ -73,7 +73,7 @@ const Reviews = () => {
             </div>
             
             <div className='add-review'>
-                <button className='button-review'  onClick={() => navigate("add")}>Agrega Review</button>
+                <button className='button-review'  onClick={() => navigate("add_review")}>Agrega Review</button>
             </div>
 
         </div>

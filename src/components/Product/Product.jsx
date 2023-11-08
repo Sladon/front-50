@@ -13,6 +13,7 @@ const Product = () => {
     const [image, setImage] = useState("");
     const [review, setReview] = useState("");
     const [tags, setTags] = useState("");
+    const [count, setCount] = useState("");
     const navigate = useNavigate();
     const [isDialogVisible, setDialogVisible] = useState(false);
 
@@ -28,6 +29,7 @@ const Product = () => {
 
     const handleData2 = (data) => {
         setReview(data.avg_rating);
+        setCount(data.count);
     }
 
     useEffect(() => {
@@ -92,6 +94,7 @@ const Product = () => {
                                     ★
                                 </span>
                             ))}
+                            <text>({count})</text>
                         </div>
                     </div>
                 </div>

@@ -43,9 +43,9 @@
     border: none;
     color: white;
     padding: 2%;
-    position: absolute;
+    position: relative;
     left: 36%;
-    top: 50em;
+    top: 90%;
 }
 
 .reviewspage{
