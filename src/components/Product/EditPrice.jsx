@@ -11,6 +11,7 @@ const EditPrice = () => {
     const [price, setPrice] = useState("");
     const [newprice, setNewPrice] = useState(0);
     const [newpricei, setNewPricei] = useState(0);
+    const [pricestatus, SetPriceStatus] = useState(false);
     const navigate = useNavigate();
 
     const handleData = (data) => {
@@ -25,6 +26,7 @@ const EditPrice = () => {
 
     const updatePrice = () => {
         setNewPrice(newpricei);
+        SetPriceStatus(true);
       };
 
     useEffect(() => {
@@ -66,6 +68,12 @@ const EditPrice = () => {
                     <button className='nice-button' onClick={updatePrice}>&#10003;</button>
                 </div>
             </div>
+
+            {pricestatus && (
+            <div className='upgrade'>
+                <text className='textpriti'> SE REGISTRO LA SOLICITUD DE CAMBIO DE PRECIO, SE VERIFICARA CON OTRAS SOLICITUDES</text>
+            </div>
+            )}
         </div>
 
 
