@@ -5,7 +5,7 @@ const product = (id) => products + `${id}/`;
 const locals = origin + "locales/";
 const local = (id) => locals + `${id}/`;
 const localProducts = (id) => `${local(id)}` + "productos/"
-const productReviews = (id) => `product/${id}/reviews/`;
+const productReviews = (id) => origin + `product/${id}/reviews/`;
 
 const images = origin + "images/"
 
