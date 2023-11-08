@@ -49,7 +49,7 @@ const Store = () => {
             <div className="horizontal-line"></div>
 
             <div className="local">
-                <span className="local-label">Local</span>
+                <span className="local-label">Ubicación</span>
                 {loc}
             </div>
 
