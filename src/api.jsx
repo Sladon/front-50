@@ -6,6 +6,7 @@ const locals = origin + "locales/";
 const local = (id) => locals + `${id}/`;
 const localProducts = (id) => `${local(id)}` + "productos/"
 const productReviews = (id) => origin + `product/${id}/reviews/`;
+const ratingReviews = (id) => origin + `productos/${id}/reviews/avg/`;
 
 const images = origin + "images/"
 
@@ -32,5 +33,7 @@ export const GetStores = (handleData) => fetch_data(locals, handleData);
 export const GetStore = (id, handleData) => fetch_data(local(id), handleData);
 
 export const GetReviews = (id, handleData) => fetch_data(productReviews(id), handleData);
+
+export const GetRatingReviews = (id, handleData) => fetch_data(ratingReviews(id), handleData);
 
 export const GetStoreProducts = (id, handleData) => fetch_data(localProducts(id), handleData);

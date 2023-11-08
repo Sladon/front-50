@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { GetProduct, GetImage } from '../../api';
+import { GetProduct, GetImage, GetRatingReviews } from '../../api';
 import { useParams } from 'react-router-dom';
 import './Product.css';
 import { useNavigate } from "react-router-dom";
@@ -26,15 +26,26 @@ const Product = () => {
         setTags(data.tags);
     }
 
+    const handleData2 = (data) => {
+        setReview(data.avg_rating);
+    }
+
     useEffect(() => {
         if (!name){
             GetProduct(id, handleData);
         }
     })
 
+    useEffect(() => {
+        if (!review){
+            GetRatingReviews(id, handleData2);
+        }
+    })
+
     const toggleDialog = () => {
         setDialogVisible(!isDialogVisible);
       };
+
 
 
     return (

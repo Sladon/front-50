@@ -8,6 +8,41 @@
 }
 
 
+.price-review {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; 
+    align-items: center; 
+    margin-top: 10px; 
+    margin-left: 10px; 
+    margin-right: 10px; 
+}
+
+.price {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: right;
+}
+
+.review {
+    font-size: 14px;
+    text-align: left;
+}
+
+
+.stars {
+    display: flex;
+    font-size: 20px;
+    color: #fff; 
+    -webkit-text-stroke: 1px #000; 
+}
+
+
+.star.filled {
+    color: #FFC436;
+}
+
+
 .name-back {
     width: 100%;
     padding: 10px;
