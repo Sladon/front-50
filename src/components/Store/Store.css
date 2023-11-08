@@ -1,0 +1,153 @@
+.comp-container {
+    background-color: #ffffff;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10%;
+}
+
+
+.name-back {
+    width: 100%;
+    padding: 10px;
+    background-color: #f7f7f7;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.go-back {
+    font-size: 20px;
+    cursor: pointer;
+    padding: 10px;
+}
+
+
+.product-name {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: left;
+    flex-grow: 1;
+}
+
+
+.edit-icon {
+    font-size: 20px;
+    cursor: pointer;
+    padding: 10px;
+}
+
+
+.edit-icon:hover {
+    color: #007bff;
+}
+
+
+.image-price {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+
+.image {
+    width: 200px;
+    height: 200px;
+}
+
+.price-review {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+
+.price {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: right;
+}
+
+.review {
+    font-size: 14px;
+    text-align: left;
+}
+
+
+.stars {
+    display: flex;
+    font-size: 20px;
+    color: #fff;
+    -webkit-text-stroke: 1px #000;
+}
+
+
+.star.filled {
+    color: #FFC436;
+}
+
+.horizontal-line {
+    width: 101%;
+    height: 2px;
+    background-color: #f7f7f7;
+    margin-top: 10px;
+}
+
+.local {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.local-label {
+    font-weight: bold;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+.description {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+.description-info {
+    border: 1px solid #9999;
+    padding: 10px;
+}
+
+.tag {
+    display: inline-block;
+    margin-right: 5px;
+    margin-top: 5px;
+    padding: 5px;
+    background-color: #f7f7f7;
+    color: #000;
+    border-radius: 10px;
+}
+
+.tags {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}

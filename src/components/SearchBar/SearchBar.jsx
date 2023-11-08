@@ -5,6 +5,8 @@ import './SearchBar.css';
 
 const SearchBar = (props) => {
     const [products, setProducts] = useState([]);
+    const [maxPrice, setMaxPrice] = useState(0);
+    const [minPrice, setMinPrice] = useState(0);
     const [searchedProducts, setSearch] = useState([]);
     const [filterOptions, setFilterOptions] = useState({
         tags: ["Tag 1", "Tag 2", "Tag 3", "Tag 4", "Tag 5"],
@@ -15,6 +17,8 @@ const SearchBar = (props) => {
 
     const handleData = (data) => {
         setProducts(data);
+        setMaxPrice(parseInt(data.reduce((max, obj) => (obj.precio > max ? obj.precio : max), data[0].precio)));
+        setMinPrice(parseInt(data.reduce((min, obj) => (obj.precio < min ? obj.precio : min), data[0].precio)));
         setSuggestions(data.map(item => item.nombre));
         setFilterOptions(prevOptions => ({
             ...prevOptions,
@@ -58,6 +62,8 @@ const SearchBar = (props) => {
                 <FilterBox
                     tags={filterOptions.tags}
                     locations={filterOptions.locations}
+                    minPrice={minPrice}
+                    maxPrice={maxPrice}
                     onFilter={handleFilter}
                 />
             )}

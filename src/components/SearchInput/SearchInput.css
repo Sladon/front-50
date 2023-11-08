@@ -5,3 +5,27 @@
     border: 1px solid rgb(0, 0, 0);
     border-radius: 5px 5px 5px 5px;
 }
+
+.suggestions {
+    padding: 2%;
+    font-weight: bold;
+    max-height: 100px;
+    overflow-y: auto;
+    position: absolute;
+    background-color: white;
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 5px;
+    top: 100%;
+    left: 0;
+    width: 90%;
+}
+
+.suggestions li {
+    padding: 5px 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.suggestions li:last-child {
+    border-bottom: none;
+    /* Remove the border-bottom for the last suggestion item */
+}
