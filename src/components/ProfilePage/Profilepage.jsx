@@ -14,24 +14,24 @@ const ProfilePage = () => {
             <Grid item>
                 <Avatar
                     sx={{
-                        width: 100,
-                        height: 100,
+                        width: 300,
+                        height: 300,
                         margin: "20px auto",
                     }}
                     alt="Nombre de usuario"
-                    src="URL de la imagen de perfil"
+                    src="https://thispersondoesnotexist.com/"
                 />
             </Grid>
 
             <Grid item>
                 <Grid item>
                     <Typography variant="h5">Nombre</Typography>
-                    <Typography variant="body1">Nombre de usuario</Typography>
+                    <Typography variant="body1">Juan Diego</Typography>
                 </Grid>
 
                 <Grid item>
                     <Typography variant="h5">Correo</Typography>
-                    <Typography variant="body1">correo@ejemplo.com</Typography>
+                    <Typography variant="body1">JuanDiego@gmail.com</Typography>
                 </Grid>
             </Grid>
 
