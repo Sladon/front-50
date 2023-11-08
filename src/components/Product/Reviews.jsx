@@ -9,14 +9,14 @@ const Reviews = () => {
     const [reviews, setReviews] = useState("");
 
     const handleData = (data) => {
-        setReviews(data);
+        console.log(id)
     }
 
     useEffect(() => {
         GetReviews(id, handleData);
     })
 
-    return(
+    return (
         <h1></h1>
     )
 };

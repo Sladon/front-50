@@ -17,8 +17,12 @@ const SearchBar = (props) => {
 
     const handleData = (data) => {
         setProducts(data);
-        setMaxPrice(parseInt(data.reduce((max, obj) => (obj.precio > max ? obj.precio : max), data[0].precio)));
-        setMinPrice(parseInt(data.reduce((min, obj) => (obj.precio < min ? obj.precio : min), data[0].precio)));
+        const prices = data.map(item => Math.trunc(parseFloat(item.precio)));
+        const maxP = Math.max(...prices);
+        const minP = Math.min(...prices);
+        setMaxPrice(maxP);
+        setMinPrice(minP);
+        console.log({ minP, maxP, prices })
         setSuggestions(data.map(item => item.nombre));
         setFilterOptions(prevOptions => ({
             ...prevOptions,
