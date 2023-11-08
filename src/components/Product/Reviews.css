@@ -1,0 +1,39 @@
+.stars {
+    display: flex;
+    font-size: 20px;
+    color: #fff; 
+    -webkit-text-stroke: 1px #000; 
+}
+
+
+.star.filled {
+    color: #FFC436;
+}
+
+.horizontal-line {
+    width: 101%;
+    height: 2px; 
+    background-color: #f7f7f7; 
+    margin-top: 10px;
+}
+
+.review {
+    padding: 10px;
+}
+
+.user-stars {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.user {
+    font-weight: bold; 
+    font-size: 20px; 
+}
+
+.comment {
+    margin-bottom: 16px;
+    margin-left: 15px;
+}

@@ -53,7 +53,7 @@ const EditPrice = () => {
             </div>
 
             <div className='price-newprice'>
-                <div className='price'>
+                <div className='price2'>
                     <text>Precio actual </text>
                     ${price}
                 </div>
