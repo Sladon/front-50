@@ -14,6 +14,7 @@ const Product = () => {
     const [review, setReview] = useState(4);
     const [tags, setTags] = useState("");
     const navigate = useNavigate();
+    const [isDialogVisible, setDialogVisible] = useState(false);
 
 
     const handleData = (data) => {
@@ -31,25 +32,39 @@ const Product = () => {
         }
     })
 
+    const toggleDialog = () => {
+        setDialogVisible(!isDialogVisible);
+      };
+
 
     return (
         <div className='comp-container'>
 
             <div className='name-back'>
                 <div className="go-back" onClick={() => navigate("/compare")}>
-                    &#8592;
+                    &#60;
                 </div>
                 <div className="product-name">
                     {name}
                 </div>
-                <div className="edit-icon" onClick={() => console.log("Editar")}>
-                    &#9998; 
+                <div className='edit-dialog'>
+                    <div className="edit-icon" onClick={() => toggleDialog()}>
+                        &#9998; 
+                    </div>
+                    {isDialogVisible && (
+                        <div className="dialog">
+                            <div className="options">
+                                <button className='option' onClick={() => console.log("EDITAR PRODUCTO")}>EDITAR PRODUCTO</button>
+                                <button className='option' onClick={() => console.log("PRODUCTO NO EXISTE")}>PRODUCTO NO EXISTE</button>
+                            </div>
+                        </div>
+                    )}
                 </div>
             </div>
 
             <div className='image-price'>
                 <div className="image-container">
-                    <img className="image" alt="muffin" src={image ? GetImage(image) : "https://media.istockphoto.com/vectors/no-image-available-sign-vector-id1138179183?k=6&m=1138179183&s=612x612&w=0&h=prMYPP9mLRNpTp3XIykjeJJ8oCZRhb2iez6vKs8a8eE="} />
+                    <img className="image" alt="muffin" src={image ? GetImage(image) : "https:/media.istockphoto.com/vectors/no-image-available-sign-vector-id1138179183?k=6&m=1138179183&s=612x612&w=0&h=prMYPP9mLRNpTp3XIykjeJJ8oCZRhb2iez6vKs8a8eE="} />
                 </div>
                 <div className="price-review">
                     <div className="price">
@@ -61,6 +76,7 @@ const Product = () => {
                                 <span
                                     key={index}
                                     className={`star ${index + 1 <= review ? 'filled' : ''}`}
+                                    onClick={() => navigate("reviews")}
                                 >
                                     ★
                                 </span>
