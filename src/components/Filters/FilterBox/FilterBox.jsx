@@ -3,10 +3,10 @@ import PriceSlider from '../Price/Price';
 import ItemSelector from '../../ItemSelector/ItemSelector';
 import './FilterBox.css';
 
-const FilterBox = ({ tags, locations, onFilter }) => {
+const FilterBox = ({ tags, locations, minPrice, maxPrice, onFilter }) => {
     const [selectedTags, setSelectedTags] = useState([]);
     const [selectedLocations, setSelectedLocations] = useState([]);
-    const [selectedPrice, setSelectedPrice] = useState(0);
+    const [selectedPrice, setSelectedPrice] = useState(maxPrice);
 
     const handleSelectedTags = (selectedTags) => {
         setSelectedTags(selectedTags);
@@ -27,8 +27,8 @@ const FilterBox = ({ tags, locations, onFilter }) => {
         <div className="filters-container">
             <h1 className="filters-title">Filtra tu busqueda!</h1>
             <PriceSlider
-                minPrice={0}
-                maxPrice={1000}
+                minPrice={minPrice}
+                maxPrice={maxPrice}
                 selectedPrice={selectedPrice}
                 onPriceChange={handleSelectedPrice}
             />
