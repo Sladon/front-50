@@ -33,20 +33,20 @@ const Product = () => {
     }
 
     useEffect(() => {
-        if (!name){
+        if (!name) {
             GetProduct(id, handleData);
         }
     })
 
     useEffect(() => {
-        if (!review){
+        if (!review) {
             GetRatingReviews(id, handleData2);
         }
     })
 
     const toggleDialog = () => {
         setDialogVisible(!isDialogVisible);
-      };
+    };
 
 
 
@@ -62,7 +62,7 @@ const Product = () => {
                 </div>
                 <div className='edit-dialog'>
                     <div className="edit-icon" onClick={() => toggleDialog()}>
-                        &#9998; 
+                        &#9998;
                     </div>
                     {isDialogVisible && (
                         <div className="dialog">
@@ -101,7 +101,7 @@ const Product = () => {
             </div>
 
             <div className="horizontal-line"></div>
-            
+
             <div className="local">
                 <span className="local-label">Local</span>
                 {local}
@@ -113,7 +113,7 @@ const Product = () => {
                     {description}
                 </div>
             </div>
-            
+
             <div className="tags">
                 <span className="local-label">Tags</span>
                 <div className="tags-info">

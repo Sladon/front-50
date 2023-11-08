@@ -20,7 +20,7 @@ const PriceSlider = ({ minPrice, maxPrice, selectedPrice, onPriceChange }) => {
             <Slider
                 min={minPrice}
                 max={maxPrice}
-                step={1}
+                step={10}
                 value={price}
                 onChange={handlePriceChange}
             />

@@ -9,11 +9,15 @@ const SearchBar = (props) => {
     const [minPrice, setMinPrice] = useState(0);
     const [searchedProducts, setSearch] = useState([]);
     const [filterOptions, setFilterOptions] = useState({
-        tags: ["Tag 1", "Tag 2", "Tag 3", "Tag 4", "Tag 5"],
+        tags: [],
         locations: [],
     });
     const [suggestions, setSuggestions] = useState([]);
     const [toggleFilters, setToggleFilters] = useState(false);
+
+    function onlyUnique(value, index, array) {
+        return array.indexOf(value) === index;
+    }
 
     const handleData = (data) => {
         setProducts(data);
@@ -22,11 +26,11 @@ const SearchBar = (props) => {
         const minP = Math.min(...prices);
         setMaxPrice(maxP);
         setMinPrice(minP);
-        console.log({ minP, maxP, prices })
         setSuggestions(data.map(item => item.nombre));
         setFilterOptions(prevOptions => ({
             ...prevOptions,
             locations: [...new Set(data.map(item => item.nombre_local))],
+            tags: [...new Set(data.map(item => item.tags.map(tag => tag.nombre)))].flat().filter(onlyUnique),
         }));
     }
 
@@ -49,7 +53,7 @@ const SearchBar = (props) => {
         const filteredProducts = toFilter.filter((product) =>
             (locals.length === 0 || locals.includes(product.nombre_local))
             && (price === 0 || parseFloat(product.precio) <= price)
-            // && (tags.length === 0 || tags.some(tag => product.nombre.toLowerCase().includes(tag.toLowerCase)))
+            && (tags.length === 0 || tags.some(tag => product.tags.map(ptag => ptag.nombre.toLowerCase()).includes(tag.toLowerCase())))
         );
         props.onDataFromSearchBar(filteredProducts);
     };
