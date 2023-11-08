@@ -11,7 +11,7 @@ const Product = () => {
     const [description, setDescription] = useState("");
     const [price, setPrice] = useState("");
     const [image, setImage] = useState("");
-    const [review, setReview] = useState(4);
+    const [review, setReview] = useState("");
     const [tags, setTags] = useState("");
     const navigate = useNavigate();
     const [isDialogVisible, setDialogVisible] = useState(false);
@@ -21,7 +21,7 @@ const Product = () => {
         setName(data.nombre);
         setLocal(data.nombre_local);
         setDescription(data.descripcion);
-        setPrice(data.precio);
+        setPrice(parseInt(data.precio, 10));
         setImage(data.imagen);
         setTags(data.tags);
     }
@@ -54,7 +54,7 @@ const Product = () => {
                     {isDialogVisible && (
                         <div className="dialog">
                             <div className="options">
-                                <button className='option' onClick={() => console.log("EDITAR PRODUCTO")}>EDITAR PRODUCTO</button>
+                                <button className='option' onClick={() => navigate("edit")}>EDITAR PRECIO</button>
                                 <button className='option' onClick={() => console.log("PRODUCTO NO EXISTE")}>PRODUCTO NO EXISTE</button>
                             </div>
                         </div>
@@ -68,7 +68,7 @@ const Product = () => {
                 </div>
                 <div className="price-review">
                     <div className="price">
-                        $ {price}
+                        ${price}
                     </div>
                     <div className="review">
                         <div className="stars">
