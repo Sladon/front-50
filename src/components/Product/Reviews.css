@@ -37,3 +37,17 @@
     margin-bottom: 16px;
     margin-left: 15px;
 }
+
+.button-review {
+    background-color: rgb(87, 87, 99);
+    border: none;
+    color: white;
+    padding: 2%;
+    position: absolute;
+    left: 36%;
+    top: 50em;
+}
+
+.reviewspage{
+    position: relative;
+}
