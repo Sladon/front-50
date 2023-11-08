@@ -1,0 +1,48 @@
+.name-back {
+    width: 100%;
+    padding: 10px;
+    background-color: #f7f7f7;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.go-back {
+    font-size: 15px;
+    cursor: pointer;
+    padding: 10px;
+}
+
+
+.product-name {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: left;
+    flex-grow: 1;
+}
+
+.price {
+    margin-top: 60px;
+    font-size: 25px;
+}
+
+.new-price {
+    margin-top: 50px;
+    font-size: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+}
+
+.nice-input {
+    height: 30px;
+    width: 200px;
+}
+
+.nice-button {
+    height: 40px;
+    width: 40px;
+    background-color: #ffffff;
+}

@@ -10,7 +10,7 @@ function ProductDetails({ result, onClick }) {
                 <h1 className="item-name">{result.nombre}</h1>
                 <h3 className="item-location">{result.local_name}</h3>
                 <div className="vertical-separator">
-                    <h3 className="price-tag">${result.precio}</h3>
+                    <h3 className="price-tag">${parseInt(result.precio, 10)}</h3>
                     <button onClick={() => onClick(result)} className="custom-button">Ver</button>
                 </div>
             </div>
