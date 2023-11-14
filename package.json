@@ -6,7 +6,7 @@
   "source": "./index.html",
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "gh-pages -b main -d dist",
+    "deploy": "gh-pages -b gh-pages -d dist",
     "build": "parcel build --public-url ./ --no-scope-hoist",
     "dev": "parcel",
     "storybook": "storybook dev -p 6006",
