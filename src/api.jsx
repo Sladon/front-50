@@ -1,4 +1,4 @@
-const origin = "http://127.0.0.1:8000/api/";
+const origin = "http://206.81.13.63:8000/api/";
 const products = origin + "productos/";
 const createProduct = products + "crear/";
 const product = (id) => products + `${id}/`;
