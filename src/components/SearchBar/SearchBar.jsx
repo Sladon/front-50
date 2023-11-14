@@ -15,6 +15,8 @@ const SearchBar = (props) => {
     const [suggestions, setSuggestions] = useState([]);
     const [toggleFilters, setToggleFilters] = useState(false);
 
+    const { enableFilter = true } = props;
+
     function onlyUnique(value, index, array) {
         return array.indexOf(value) === index;
     }
@@ -27,11 +29,13 @@ const SearchBar = (props) => {
         setMaxPrice(maxP);
         setMinPrice(minP);
         setSuggestions(data.map(item => item.nombre));
-        setFilterOptions(prevOptions => ({
-            ...prevOptions,
-            locations: [...new Set(data.map(item => item.nombre_local))],
-            tags: [...new Set(data.map(item => item.tags.map(tag => tag.nombre)))].flat().filter(onlyUnique),
-        }));
+        if (enableFilter) {
+            setFilterOptions(prevOptions => ({
+                ...prevOptions,
+                locations: [...new Set(data.map(item => item.nombre_local))],
+                tags: [...new Set(data.map(item => item.tags.map(tag => tag.nombre)))].flat().filter(onlyUnique),
+            }));
+        };
     }
 
     useEffect(() => {
@@ -64,9 +68,9 @@ const SearchBar = (props) => {
             <button className="filter-btn" onClick={() => {
                 setToggleFilters(!toggleFilters);
             }}>
-                <img className="filter-icon" src="/img/filtericon.png" alt="Filter" />
+                {enableFilter && <img className="filter-icon" src="/img/filtericon.png" alt="Filter" />}
             </button>
-            {toggleFilters && (
+            {enableFilter && toggleFilters && (
                 <FilterBox
                     tags={filterOptions.tags}
                     locations={filterOptions.locations}

@@ -21,7 +21,7 @@ const Stores = () => {
     return (
         <div className='comp-container'>
             <h1 className='comp-title'>Tiendas</h1>
-            <SearchBar onDataFromSearchBar={handleDataFromSearchBar} getApiCall={GetStores} />
+            <SearchBar onDataFromSearchBar={handleDataFromSearchBar} enableFilter={false} getApiCall={GetStores} />
             {(dataFromSearchBar.length > 0) && (
                 <ResultList searchResults={dataFromSearchBar} clearResults={clearResults} ItemDetailsComponent={StoresItemDetails} navigateTo={"/store"} />
             )}
