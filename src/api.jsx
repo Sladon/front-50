@@ -7,6 +7,8 @@ const local = (id) => locals + `${id}/`;
 const localProducts = (id) => `${local(id)}` + "productos/"
 const productReviews = (id) => origin + `product/${id}/reviews/`;
 const ratingReviews = (id) => origin + `productos/${id}/reviews/avg/`;
+const user = (id) => origin + `user/${id}/`
+const login = origin + "login/"
 
 const images = origin + "images/"
 
@@ -20,6 +22,16 @@ function fetch_data(url, handleData) {
         .catch((error) => {
             console.error("Error fetching data:", error);
         });
+}
+
+function post_data(url, data) {
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    });
 }
 
 export const GetProducts = (handleData) => fetch_data(products, handleData);
@@ -37,3 +49,7 @@ export const GetReviews = (id, handleData) => fetch_data(productReviews(id), han
 export const GetRatingReviews = (id, handleData) => fetch_data(ratingReviews(id), handleData);
 
 export const GetStoreProducts = (id, handleData) => fetch_data(localProducts(id), handleData);
+
+export const GetUser = (id, handleData) => fetch_data(user(id), handleData);
+
+export const LoginUser = (data) => post_data(login, data);
