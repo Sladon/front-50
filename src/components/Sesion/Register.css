@@ -1,6 +1,56 @@
-.login-back {
+label,
+input,
+button {
+    width: 100%;
+    margin-bottom: 15px;
+    /* Increased margin for better spacing */
+}
+
+.logo-sesion {
+    text-align: center;
+}
+
+.icono-sesion {
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.qcomparator-sesion {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 10px;
+    font-size: 28px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input {
     width: 100%;
     padding: 10px;
+    margin: 5px 0 15px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.login-back {
+    width: 100%;
+    padding: 15px;
     background-color: #f7f7f7;
     border-radius: 8px;
     display: flex;
@@ -8,17 +58,57 @@
     justify-content: space-between;
 }
 
-
 .go-back-login {
     font-size: 15px;
     cursor: pointer;
     padding: 10px;
 }
 
-
 .login-name {
     font-size: 18px;
     font-weight: bold;
     text-align: left;
     flex-grow: 1;
+}
+
+.logo-sesion {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.icono-sesion {
+    width: 80px;
+    height: 80px;
+}
+
+.qcomparator-sesion {
+    font-size: 32px;
+    margin-top: 10px;
+}
+
+.user-input {
+    padding: 2em
+}
+
+.password-container {
+    position: relative;
+}
+
+#password {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.toggle-password {
+    position: absolute;
+    top: 35%;
+    right: 10px;
+    size: 130%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    user-select: none;
 }
