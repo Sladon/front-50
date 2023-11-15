@@ -23,6 +23,7 @@ const SearchBar = (props) => {
 
     const handleData = (data) => {
         setProducts(data);
+        props.onDataFromSearchBar(data);
         const prices = data.map(item => Math.trunc(parseFloat(item.precio)));
         const maxP = Math.max(...prices);
         const minP = Math.min(...prices);
