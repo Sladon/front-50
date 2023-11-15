@@ -38,7 +38,7 @@ const Store = () => {
                 <div className="go-back" onClick={() => navigate("/stores")}>
                     &#8592;
                 </div>
-                <div className="product-name">
+                <div className="store-name">
                     {name}
                 </div>
                 <div className="edit-icon" onClick={() => console.log("Editar")}>
@@ -48,19 +48,19 @@ const Store = () => {
 
             <div className="horizontal-line"></div>
 
-            <div className="local">
-                <span className="local-label">Ubicación</span>
+            <div className="store">
+                <span className="store-label">Ubicación</span>
                 {loc}
             </div>
 
-            <div className="description">
-                <span className="local-label">Descripción</span>
-                <div className='description-info'>
+            <div className="store-desc">
+                <span className="store-label">Descripción</span>
+                <div className='store-info'>
                     {desc}
                 </div>
             </div>
 
-            <ul className='products'>
+            <ul className='stores'>
                 {products && products.map((product, index) => (
                     <li key={index}>
                         <img src={GetImage(product.imagen)} alt={product.nombre} />

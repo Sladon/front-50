@@ -25,7 +25,7 @@ const FilterBox = ({ tags, locations, minPrice, maxPrice, onFilter }) => {
 
     return (
         <div className="filters-container">
-            <h1 className="filters-title">Filtra tu busqueda!</h1>
+            <h1 className="filters-title">Filtros</h1>
             <PriceSlider
                 minPrice={minPrice}
                 maxPrice={maxPrice}
