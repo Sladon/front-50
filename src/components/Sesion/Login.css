@@ -1,0 +1,15 @@
+.logo-sesion {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+  
+.qcomparator-sesion {
+    font-size: 30px; 
+}
+
+.icono-sesion {
+    width: 80%;
+    height: 100%;
+}
+

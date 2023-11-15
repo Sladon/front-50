@@ -1,0 +1,24 @@
+.login-back {
+    width: 100%;
+    padding: 10px;
+    background-color: #f7f7f7;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.go-back-login {
+    font-size: 15px;
+    cursor: pointer;
+    padding: 10px;
+}
+
+
+.login-name {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: left;
+    flex-grow: 1;
+}
