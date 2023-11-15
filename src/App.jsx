@@ -9,14 +9,14 @@ import Reviews from './components/Product/Reviews';
 import EditPrice from './components/Product/EditPrice';
 import NewReview from './components/Product/NewReview';
 import Store from './components/Store/Store';
-import Login from './components/Login/Login'; // Importa el componente de inicio de sesión
+import Login from './components/Sesion/Login'; 
 
 const App = () => {
     return (
         <div>
             <Router>
                 <Routes>
-                    <Route path="/login" element={<Login />} /> {/* Ruta para el formulario de inicio de sesión */}
+                    <Route path="/login" element={<Login />} /> 
                     <Route path="/profile" element={<ProfilePage />} />
                     <Route path="/stores" element={<Stores />} />
                     <Route path="/compare" element={<Compare />} />
