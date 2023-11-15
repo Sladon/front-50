@@ -1,32 +1,34 @@
-import React from "react";
-import NavigationBar from "./components/NavigationBar/NavigationBar";
-import ProfilePage from "./components/ProfilePage/Profilepage";
-import Stores from "./components/Stores/Stores";
-import Compare from "./components/Compare/Compare";
-import Product from "./components/Product/Product";
-import Reviews from "./components/Product/Reviews";
-import EditPrice from "./components/Product/EditPrice";
-import NewReview from "./components/Product/NewReview";
-import Store from "./components/Store/Store";
-import { HashRouter, Route, Routes } from "react-router-dom";
+import React from 'react';
+import {  BrowserRouter as Router ,Routes, Route, Link } from 'react-router-dom';
+import NavigationBar from './components/NavigationBar/NavigationBar';
+import ProfilePage from './components/ProfilePage/Profilepage';
+import Stores from './components/Stores/Stores';
+import Compare from './components/Compare/Compare';
+import Product from './components/Product/Product';
+import Reviews from './components/Product/Reviews';
+import EditPrice from './components/Product/EditPrice';
+import NewReview from './components/Product/NewReview';
+import Store from './components/Store/Store';
+import Login from './components/Login/Login'; // Importa el componente de inicio de sesión
 
 const App = () => {
     return (
         <div>
-            <HashRouter>
+            <Router>
                 <Routes>
-                    <Route exact path="/profile" element={<ProfilePage />} />
-                    <Route exact path="/stores" element={<Stores />} />
-                    <Route exact path="/compare" element={<Compare />} />
-                    <Route exact path="/product/:id" element={<Product />} />
-                    <Route exact path="/product/:id/reviews" element={<Reviews />} />
-                    <Route exact path="/product/:id/reviews/add" element={<NewReview />} />
-                    <Route exact path="/product/:id/reviews/add_review" element={<NewReview />} />
-                    <Route exact path="/product/:id/edit" element={<EditPrice />} />
-                    <Route exact path="/store/:id" element={<Store />} />
+                    <Route path="/login" element={<Login />} /> {/* Ruta para el formulario de inicio de sesión */}
+                    <Route path="/profile" element={<ProfilePage />} />
+                    <Route path="/stores" element={<Stores />} />
+                    <Route path="/compare" element={<Compare />} />
+                    <Route path="/product/:id" element={<Product />} />
+                    <Route path="/product/:id/reviews" element={<Reviews />} />
+                    <Route path="/product/:id/reviews/add" element={<NewReview />} />
+                    <Route path="/product/:id/reviews/add_review" element={<NewReview />} />
+                    <Route path="/product/:id/edit" element={<EditPrice />} />
+                    <Route path="/store/:id" element={<Store />} />
                 </Routes>
                 <NavigationBar />
-            </HashRouter>
+            </Router>
         </div>
     );
 };
