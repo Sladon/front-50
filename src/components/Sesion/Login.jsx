@@ -1,31 +1,24 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import { LoginUser } from '../../api';
 import { useNavigate } from 'react-router-dom';
 import "./Login.css";
 
 const Login = () => {
     const navigate = useNavigate();
-    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const handleLogin = async () => {
-        try {
-            const response = await axios.post('http://localhost:8000/api/login/', {
-                username: username,
-                password: password,
-            });
+    const handleResponse = () => {
 
-            console.log(response.data);  
-        
-        } catch (error) {
-            console.error('Error al iniciar sesión', error);
-            
-        }
-    };
+    }
+
+    const handleLogin = () => {
+        LoginUser({ email: email, password: password }, handleResponse)
+    }
 
     const handleRegister = () => {
         navigate('/register');
-      };
+    };
 
     return (
         <div>
@@ -34,12 +27,12 @@ const Login = () => {
                 <h1 className='qcomparator-sesion'>QComparator</h1>
             </div>
             <div>
-                <label>Username:</label>
-                <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
-                
-                <label>Password:</label>
+                <label>Mail:</label>
+                <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
+
+                <label>Contraseña:</label>
                 <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-                
+
                 <button onClick={handleLogin}>Login</button>
             </div>
             <div>

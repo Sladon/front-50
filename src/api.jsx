@@ -8,7 +8,9 @@ const localProducts = (id) => `${local(id)}` + "productos/"
 const productReviews = (id) => origin + `product/${id}/reviews/`;
 const ratingReviews = (id) => origin + `productos/${id}/reviews/avg/`;
 const user = (id) => origin + `user/${id}/`
-const login = origin + "login/"
+const login = origin + "login/";
+const logout = origin + "logout/";
+const register = origin + "register/";
 
 const images = origin + "images/"
 
@@ -24,14 +26,21 @@ function fetch_data(url, handleData) {
         });
 }
 
-function post_data(url, data) {
+function post_data(url, data, handleResponse) {
     fetch(url, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(data),
-    });
+    })
+        .then((response) => response.json())
+        .then((responseData) => {
+            handleResponse(responseData);
+        })
+        .catch((error) => {
+            console.error("Error posting data:", error);
+        });
 }
 
 export const GetProducts = (handleData) => fetch_data(products, handleData);
@@ -52,4 +61,8 @@ export const GetStoreProducts = (id, handleData) => fetch_data(localProducts(id)
 
 export const GetUser = (id, handleData) => fetch_data(user(id), handleData);
 
-export const LoginUser = (data) => post_data(login, data);
+export const LoginUser = (data, handleResponse) => post_data(login, data, handleResponse);
+
+export const LogoutUser = () => fetch_data(logout, console.log);
+
+export const RegisterUser = (data, handleResponse) => post_data(register, data, handleResponse);
