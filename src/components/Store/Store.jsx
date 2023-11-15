@@ -66,7 +66,7 @@ const Store = () => {
                         <img src={GetImage(product.imagen)} alt={product.nombre} />
                         <h3>{product.nombre}</h3>
                         <p>Location: {product.nombre_local}</p>
-                        <p>Price: {product.precio}</p>
+                        <p>Price: ${parseInt(product.precio, 10)}</p>
                     </li>
                 ))}
             </ul>

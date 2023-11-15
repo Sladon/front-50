@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BottomNavigation, BottomNavigationAction } from "@mui/material";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import CompareIcon from "@mui/icons-material/Compare";
@@ -8,12 +8,28 @@ import { useNavigate } from "react-router-dom";
 
 const NavigationBar = () => {
     const [value, setValue] = useState(0);
+    const [isLogged, setIsLogged] = useState(() => {
+        const storedIsLogged = localStorage.getItem('isLogged');
+        return storedIsLogged ? JSON.parse(storedIsLogged) : false;
+    });
+    
+    useEffect(() => {
+        localStorage.setItem('isLogged', JSON.stringify(isLogged));
+    }, [isLogged]);
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
 
     const navigate = useNavigate();
+
+    const handleAccountClick = () => {
+        if (isLogged) {
+            navigate("/profile");
+        } else {
+            navigate("/Login");
+        }
+    };
 
     return (
         <BottomNavigation
@@ -25,7 +41,7 @@ const NavigationBar = () => {
                 label="Cuenta"
                 value="Cuenta"
                 icon={<AccountCircleIcon />}
-                onClick={() => navigate("/profile")}
+                onClick={handleAccountClick}
             />
             <BottomNavigationAction
                 label="Comparar"
