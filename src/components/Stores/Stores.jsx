@@ -19,7 +19,7 @@ const Stores = () => {
 
 
     return (
-        <div className='comp-container'>
+        <div className='comp-container1'>
             <h1 className='comp-title'>Tiendas</h1>
             <SearchBar onDataFromSearchBar={handleDataFromSearchBar} enableFilter={false} getApiCall={GetStores} />
             {(dataFromSearchBar.length > 0) && (

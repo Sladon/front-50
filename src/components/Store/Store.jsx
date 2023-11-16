@@ -41,9 +41,6 @@ const Store = () => {
                 <div className="store-name">
                     {name}
                 </div>
-                <div className="edit-icon" onClick={() => console.log("Editar")}>
-                    &#9998;
-                </div>
             </div>
 
             <div className="horizontal-line"></div>
