@@ -11,6 +11,7 @@ const user = (id) => origin + `user/${id}/`
 const login = origin + "login/";
 const logout = origin + "logout/";
 const register = origin + "register/";
+const reviewCreate = origin + "reviews/create/"
 
 const images = origin + "images/"
 
@@ -66,3 +67,5 @@ export const LoginUser = (data, handleResponse) => post_data(login, data, handle
 export const LogoutUser = () => fetch_data(logout, console.log);
 
 export const RegisterUser = (data, handleResponse) => post_data(register, data, handleResponse);
+
+export const ReviewCreate = (data, handleResponse) => post_data(reviewCreate, data, handleResponse);
