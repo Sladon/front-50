@@ -3,12 +3,14 @@ import { GetReviews, GetProduct  } from '../../api';
 import { useParams } from 'react-router-dom';
 import './Reviews.css';
 import { useNavigate } from "react-router-dom";
+import { useGlobalContext } from '../../context';
 
 const Reviews = () => {
     const { id } = useParams();
     const [reviews, setReviews] = useState(null);
     const [name, setName] = useState(null);
     const navigate = useNavigate();
+    const { islogged } = useGlobalContext();
 
     const handleData1 = (data) => {
         setReviews(data)
@@ -72,9 +74,18 @@ const Reviews = () => {
                 )}
             </div>
             
-            <div className='add-review'>
-                <button className='button-review'  onClick={() => navigate("add_review")}>Agrega Review</button>
-            </div>
+            {islogged ? (
+                <div className='add-review'>
+                    <button className='button-review' onClick={() => navigate("add_review")}>
+                    Agrega Review
+                    </button>
+                </div>
+                ) : (
+                <div>
+                    <p>Para agregar reviews, inicia sesión.</p>
+                    <button onClick={() => navigate("/login")}>Iniciar Sesión</button>
+                </div>
+            )}
 
         </div>
     )
