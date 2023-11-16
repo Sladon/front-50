@@ -3,6 +3,7 @@ import { GetProduct, GetImage, GetRatingReviews } from '../../api';
 import { useParams } from 'react-router-dom';
 import './Product.css';
 import { useNavigate } from "react-router-dom";
+import { useGlobalContext } from '../../context';
 
 const Product = () => {
     const { id } = useParams();
@@ -16,6 +17,7 @@ const Product = () => {
     const [count, setCount] = useState("");
     const navigate = useNavigate();
     const [isDialogVisible, setDialogVisible] = useState(false);
+    const { islogged } = useGlobalContext();
 
 
     const handleData = (data) => {
@@ -60,6 +62,7 @@ const Product = () => {
                 <div className="product-name">
                     {name}
                 </div>
+                {islogged ? (
                 <div className='edit-dialog'>
                     <div className="edit-icon" onClick={() => toggleDialog()}>
                         &#9998;
@@ -73,6 +76,7 @@ const Product = () => {
                         </div>
                     )}
                 </div>
+                ):(islogged)}
             </div>
 
             <div className='image-price'>
