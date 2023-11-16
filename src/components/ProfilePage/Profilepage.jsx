@@ -1,17 +1,23 @@
 import React, { useState, useEffect }  from "react";
 import { Grid, Typography, Avatar, Button } from "@mui/material";
+import { useGlobalContext } from "../../context";
+import { useNavigate } from "react-router-dom";
 
 const ProfilePage = () => {
-    const [isLogged, setIsLogged] = useState(() => {
-        const storedIsLogged = localStorage.getItem('isLogged');
-        return storedIsLogged ? JSON.parse(storedIsLogged) : false;
-      });
+    const navigate = useNavigate();
+    const { setIslogged, setUsername, setUsermail, setUserid, setUserrol } = useGlobalContext();
+    const { username } = useGlobalContext()
+    const { usermail } = useGlobalContext()
     
-      useEffect(() => {
-        localStorage.setItem('isLogged', JSON.stringify(isLogged));
-      }, [isLogged]);
+    const handleLogout = () => {
+        setIslogged(false);
+        setUsername(null);
+        setUsermail(null);
+        setUserid(null);
+        setUserrol(null);
+        navigate('/login');
+    };
 
-      console.log(isLogged);
     return (
         <Grid
             container
@@ -36,19 +42,24 @@ const ProfilePage = () => {
             <Grid item>
                 <Grid item>
                     <Typography variant="h5">Nombre</Typography>
-                    <Typography variant="body1">Juan Diego</Typography>
+                    <Typography variant="body1">{username}</Typography>
                 </Grid>
 
                 <Grid item>
                     <Typography variant="h5">Correo</Typography>
-                    <Typography variant="body1">JuanDiego@gmail.com</Typography>
+                    <Typography variant="body1">{usermail}</Typography>
                 </Grid>
             </Grid>
 
             <Grid item>
-                <Button variant="contained" color="primary" fullWidth>
-                    Cerrar Sesión
-                </Button>
+            <Button
+                variant="contained"
+                color="primary"
+                fullWidth
+                onClick={handleLogout}
+            >
+                Cerrar Sesión
+            </Button>
             </Grid>
         </Grid>
     );

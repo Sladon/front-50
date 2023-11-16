@@ -2,18 +2,29 @@ import React, { useState } from 'react';
 import { LoginUser } from '../../api';
 import { useNavigate } from 'react-router-dom';
 import "./Login.css";
+import { useGlobalContext } from '../../context';
 
 const Login = () => {
     const navigate = useNavigate();
-    const [email, setEmail] = useState('');
+    const [username1, setUsername1] = useState('');
     const [password, setPassword] = useState('');
+    const { setIslogged, setUsername, setUsermail, setUserid, setUserrol } = useGlobalContext();
 
-    const handleResponse = () => {
-
+    const handleResponse = (response) => {
+        if (response.user.id !== null) {
+            setIslogged(true);
+            setUsername(response.user.username);
+            setUsermail(response.user.email);
+            setUserid(response.user.id);
+            setUserrol(response.user.rol);
+            navigate('/profile'); 
+        } else {
+            alert('Inicio de sesión fallido. Verifica tu nombre de usuario y contraseña.');
+        }
     }
 
     const handleLogin = () => {
-        LoginUser({ email: email, password: password }, handleResponse)
+        LoginUser({ username: username1, password: password }, handleResponse);
     }
 
     const handleRegister = () => {
@@ -27,8 +38,8 @@ const Login = () => {
                 <h1 className='qcomparator-sesion'>QComparator</h1>
             </div>
             <div>
-                <label>Mail:</label>
-                <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
+                <label>Nombre de Usuario:</label>
+                <input type="text" value={username1} onChange={(e) => setUsername1(e.target.value)} />
 
                 <label>Contraseña:</label>
                 <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
