@@ -5,17 +5,11 @@ import CompareIcon from "@mui/icons-material/Compare";
 import StoreIcon from "@mui/icons-material/Store";
 import "./NavigationBar.css";
 import { useNavigate } from "react-router-dom";
+import { useGlobalContext } from "../../context";
 
 const NavigationBar = () => {
     const [value, setValue] = useState(0);
-    const [isLogged, setIsLogged] = useState(() => {
-        const storedIsLogged = localStorage.getItem('isLogged');
-        return storedIsLogged ? JSON.parse(storedIsLogged) : false;
-    });
-    
-    useEffect(() => {
-        localStorage.setItem('isLogged', JSON.stringify(isLogged));
-    }, [isLogged]);
+    const { islogged } = useGlobalContext();
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -24,7 +18,7 @@ const NavigationBar = () => {
     const navigate = useNavigate();
 
     const handleAccountClick = () => {
-        if (isLogged) {
+        if (islogged) {
             navigate("/profile");
         } else {
             navigate("/Login");

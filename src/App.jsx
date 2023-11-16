@@ -10,19 +10,9 @@ import NewReview from './components/Product/NewReview';
 import Store from './components/Store/Store';
 import Login from './components/Sesion/Login'; 
 import Register from './components/Sesion/Register';
-import React, { useState, useEffect } from 'react';
 
 
 const App = () => {
-    const [isLogged, setIsLogged] = useState(() => {
-        const storedIsLogged = localStorage.getItem('isLogged');
-        return storedIsLogged ? JSON.parse(storedIsLogged) : false;
-      });
-    
-      useEffect(() => {
-        localStorage.setItem('isLogged', JSON.stringify(isLogged));
-      }, [isLogged]);
-
     return (
         <div>
             <Router>
