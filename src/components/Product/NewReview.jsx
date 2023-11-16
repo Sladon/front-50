@@ -22,12 +22,12 @@ const NewReview = () => {
 
   const handleSubmit = () => {
     ReviewCreate({ user: userid, producto: id, comentario: description, calificacion: parseInt(rating, 10) }, handleResponse);
+    navigate(`/product/${id}/reviews`);
   };
 
   const handleResponse = (resp) => {
     if (resp.message != "Invalid credentials") {
-        console.log(resp);
-        //navigate(`/product/${id}/reviews`);
+        navigate(`/product/${id}/reviews`);
     } else {
         alert('Clasificación o descripcion incorrectas .');
         setDisplayError(resp.errors);
@@ -44,7 +44,7 @@ const NewReview = () => {
       </div>
 
       <div>
-        <label>Clasificación (1-5):</label>
+        <label>Calificación (1-5):</label>
         <input type='number' min='1' max='5' value={rating} onChange={handleRatingChange} />
       </div>
 
