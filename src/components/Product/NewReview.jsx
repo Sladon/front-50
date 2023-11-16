@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import { ReviewCreate } from '../../api';
+import { ReviewCreate, GetProduct } from '../../api';
 import { useGlobalContext } from '../../context';
 
 const NewReview = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { userid } = useGlobalContext();
+  const [name, setName] = useState(null);
 
   const [rating, setRating] = useState('');
   const [description, setDescription] = useState('');
@@ -32,7 +33,18 @@ const NewReview = () => {
         alert('Clasificación o descripcion incorrectas .');
         setDisplayError(resp.errors);
     }
-}
+
+    };
+
+    useEffect(() => {
+        if (!name) {
+            GetProduct(id, handleData);
+        }
+    })
+
+    const handleData = (data) => {
+        setName(data.nombre);
+    }
 
   return (
     <div>
