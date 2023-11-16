@@ -74,3 +74,9 @@
 .go-to-register button:hover {
     background-color: #2980b9;
 }
+
+.error-message {
+    color: #d9534f;
+    font-size: 14px;
+    margin-top: 5px;
+}

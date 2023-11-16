@@ -9,17 +9,19 @@ const Login = () => {
     const [username1, setUsername1] = useState('');
     const [password, setPassword] = useState('');
     const { setIslogged, setUsername, setUsermail, setUserid, setUserrol } = useGlobalContext();
+    const [displayError, setDisplayError] = useState([]);
 
-    const handleResponse = (response) => {
-        if (response.user.id !== null) {
+    const handleResponse = (resp) => {
+        if (resp.message != "Invalid credentials") {
             setIslogged(true);
-            setUsername(response.user.username);
-            setUsermail(response.user.email);
-            setUserid(response.user.id);
-            setUserrol(response.user.rol);
+            setUsername(resp.user.username);
+            setUsermail(resp.user.email);
+            setUserid(resp.user.id);
+            setUserrol(resp.user.rol);
             navigate('/profile');
         } else {
             alert('Inicio de sesión fallido. Verifica tu nombre de usuario y contraseña.');
+            setDisplayError(resp.errors);
         }
     }
 
@@ -45,6 +47,17 @@ const Login = () => {
                 <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
 
                 <button onClick={handleLogin}>Login</button>
+                {displayError &&
+                    Object.keys(displayError).map(errorType => {
+                        const errorMessages = displayError[errorType];
+
+                        return errorMessages.map((errorMessage, index) => (
+                            <p key={`${errorType}-${index}`} className="error-message">
+                                {errorMessage}
+                            </p>
+                        ));
+                    })
+                }
             </div>
             <div className='go-to-register'>
                 <h1> No tienes cuenta? registrate</h1>
