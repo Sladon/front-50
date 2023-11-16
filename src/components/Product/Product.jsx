@@ -57,7 +57,7 @@ const Product = () => {
 
             <div className='name-back'>
                 <div className="go-back" onClick={() => navigate("/compare")}>
-                    &#60;
+                    &#x2190;
                 </div>
                 <div className="product-name">
                     {name}
@@ -81,7 +81,8 @@ const Product = () => {
 
             <div className='image-price'>
                 <div className="image-container">
-                    <img className="image image-details" alt="muffin" src={image ? GetImage(image) : "https:/media.istockphoto.com/vectors/no-image-available-sign-vector-id1138179183?k=6&m=1138179183&s=612x612&w=0&h=prMYPP9mLRNpTp3XIykjeJJ8oCZRhb2iez6vKs8a8eE="} />
+                    <img className="image" alt="muffin" src={image ? GetImage(image) : "https:/media.istockphoto.com/vectors/no-image-available-sign-vector-id1138179183?k=6&m=1138179183&s=612x612&w=0&h=prMYPP9mLRNpTp3XIykjeJJ8oCZRhb2iez6vKs8a8eE="} />
+                    <div class="image-overlay"></div>
                 </div>
                 <div className="price-review">
                     <div className="price">
@@ -105,8 +106,6 @@ const Product = () => {
                     </div>
                 </div>
             </div>
-
-            <div className="horizontal-line"></div>
 
             <div className="local">
                 <span className="local-label">Local</span>
