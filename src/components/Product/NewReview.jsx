@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import { ReviewCreate } from '../../api';
+import { useGlobalContext } from '../../context';
 
 const NewReview = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const { userid } = useGlobalContext();
 
   const [rating, setRating] = useState('');
   const [description, setDescription] = useState('');
@@ -18,11 +21,18 @@ const NewReview = () => {
   };
 
   const handleSubmit = () => {
-
-    console.log('Enviar a la API:', { rating, description });
-
-    navigate(`/product/${id}/reviews`);
+    ReviewCreate({ user: userid, producto: id, comentario: description, calificacion: parseInt(rating, 10) }, handleResponse);
   };
+
+  const handleResponse = (resp) => {
+    if (resp.message != "Invalid credentials") {
+        console.log(resp);
+        //navigate(`/product/${id}/reviews`);
+    } else {
+        alert('Clasificación o descripcion incorrectas .');
+        setDisplayError(resp.errors);
+    }
+}
 
   return (
     <div>
