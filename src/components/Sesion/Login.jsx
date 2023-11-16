@@ -17,7 +17,7 @@ const Login = () => {
             setUsermail(response.user.email);
             setUserid(response.user.id);
             setUserrol(response.user.rol);
-            navigate('/profile'); 
+            navigate('/profile');
         } else {
             alert('Inicio de sesión fallido. Verifica tu nombre de usuario y contraseña.');
         }
@@ -32,12 +32,12 @@ const Login = () => {
     };
 
     return (
-        <div>
+        <>
             <div className='logo-sesion'>
                 <img className='icono-sesion' src='/img/hamburguer.png' alt='Search' />
                 <h1 className='qcomparator-sesion'>QComparator</h1>
             </div>
-            <div>
+            <div className='login-input'>
                 <label>Nombre de Usuario:</label>
                 <input type="text" value={username1} onChange={(e) => setUsername1(e.target.value)} />
 
@@ -46,11 +46,11 @@ const Login = () => {
 
                 <button onClick={handleLogin}>Login</button>
             </div>
-            <div>
+            <div className='go-to-register'>
                 <h1> No tienes cuenta? registrate</h1>
                 <button onClick={handleRegister}>Registrarse</button>
             </div>
-        </div>
+        </>
     );
 };
 
