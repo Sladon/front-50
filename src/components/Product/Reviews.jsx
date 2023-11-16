@@ -49,7 +49,7 @@ const Reviews = () => {
                         <div className='review'> 
                             <div className='user-stars'>
                                 <div className='user'> 
-                                    {review.user}
+                                    {review.username}
                                 </div>
                                 <div className="stars">
                                     {Array.from({ length: 5 }).map((_, index) => (
@@ -75,15 +75,15 @@ const Reviews = () => {
             </div>
             
             {islogged ? (
-                <div className='add-review'>
+                <div className='add-review-div'>
                     <button className='button-review' onClick={() => navigate("add_review")}>
                     Agrega Review
                     </button>
                 </div>
                 ) : (
-                <div>
-                    <p>Para agregar reviews, inicia sesión.</p>
-                    <button onClick={() => navigate("/login")}>Iniciar Sesión</button>
+                <div className='add-review-div'>
+                    <p className='p-review'>* Para agregar reviews, inicia sesión. *</p>
+                    <button className='button-review'  onClick={() => navigate("/login")}>Iniciar Sesión</button>
                 </div>
             )}
 
